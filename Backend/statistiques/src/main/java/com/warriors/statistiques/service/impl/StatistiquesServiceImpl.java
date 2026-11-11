@@ -8,6 +8,7 @@ import com.warriors.statistiques.service.StatistiquesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +25,10 @@ public class StatistiquesServiceImpl implements StatistiquesService {
     private InstantaneRepository instantaneRepository;
 
     @Override
-    public List<StatEvenement> getAll() {
+    public List<StatEvenement> getAll(LocalDate from, LocalDate to) {
+        if (from != null && to != null) {
+            return statEvenementRepository.findByDateEvenementBetween(from, to);
+        }
         return statEvenementRepository.findAll();
     }
 
@@ -54,6 +58,9 @@ public class StatistiquesServiceImpl implements StatistiquesService {
         Optional<StatEvenement> optional = statEvenementRepository.findByEvenementId(evenementId);
         if (optional.isPresent()) {
             StatEvenement stat = optional.get();
+            if (newStat.getTitre() != null) stat.setTitre(newStat.getTitre());
+            if (newStat.getDateEvenement() != null) stat.setDateEvenement(newStat.getDateEvenement());
+            if (newStat.getStatut() != null) stat.setStatut(newStat.getStatut());
             if (newStat.getInscrits() != null) stat.setInscrits(newStat.getInscrits());
             if (newStat.getPresents() != null) stat.setPresents(newStat.getPresents());
             if (newStat.getNoteMoyenne() != null) stat.setNoteMoyenne(newStat.getNoteMoyenne());

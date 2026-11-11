@@ -2,6 +2,7 @@ package com.warriors.statistiques.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "stat_evenements")
@@ -17,6 +18,12 @@ public class StatEvenement {
 
     @Column(nullable = false, unique = true)
     private Long evenementId;
+
+    private String titre;
+
+    private LocalDate dateEvenement;
+
+    private String statut = "PUBLIE"; // PUBLIE, ANNULE, TERMINE
 
     private Integer inscrits = 0;
     private Integer presents = 0;

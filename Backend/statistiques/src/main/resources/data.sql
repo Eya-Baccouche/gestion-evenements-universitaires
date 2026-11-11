@@ -4,15 +4,15 @@
 -- ===================================================================
 
 -- 1. Statistiques globales par evenement (Table: stat_evenements)
--- (evenement_id, inscrits, presents, taux_presence, note_moyenne, nb_avis)
-INSERT INTO stat_evenements (evenement_id, inscrits, presents, taux_presence, note_moyenne, nb_avis)
+-- (evenement_id, titre, date_evenement, statut, inscrits, presents, taux_presence, note_moyenne, nb_avis)
+INSERT INTO stat_evenements (evenement_id, titre, date_evenement, statut, inscrits, presents, taux_presence, note_moyenne, nb_avis)
 VALUES 
-    (1, 120, 105, 87.50, 4.7, 45),  -- Conférence Intelligence Artificielle & Deep Learning
-    (2, 80,  76,  95.00, 4.9, 38),  -- Hackathon AWD 2026-2027
-    (3, 60,  48,  80.00, 4.3, 22),  -- Workshop Cybersecurite & Ethical Hacking
-    (4, 250, 210, 84.00, 4.4, 80),  -- Forum Entreprises & Stages PFE
-    (5, 90,  72,  80.00, 4.6, 30),  -- Seminaire Cloud Computing & Microservices
-    (6, 300, 285, 95.00, 4.9, 120)  -- Ceremonie de Remise des Diplomes
+    (1, 'Conference Intelligence Artificielle & Deep Learning', '2026-11-01', 'TERMINE', 120, 105, 87.50, 4.7, 45),
+    (2, 'Hackathon AWD 2026-2027',                              '2026-11-05', 'PUBLIE',   80,  76,  95.00, 4.9, 38),
+    (3, 'Workshop Cybersecurite & Ethical Hacking',             '2026-11-08', 'PUBLIE',   60,  48,  80.00, 4.3, 22),
+    (4, 'Forum Entreprises & Stages PFE',                       '2026-11-10', 'PUBLIE',  250, 210,  84.00, 4.4, 80),
+    (5, 'Seminaire Cloud Computing & Microservices',            '2026-11-15', 'PUBLIE',   90,  72,  80.00, 4.6, 30),
+    (6, 'Ceremonie de Remise des Diplomes',                     '2026-11-20', 'TERMINE', 300, 285,  95.00, 4.9, 120)
 ON CONFLICT (evenement_id) DO NOTHING;
 
 -- 2. Instantanes temporels pour la timeline (Table: instantanes)

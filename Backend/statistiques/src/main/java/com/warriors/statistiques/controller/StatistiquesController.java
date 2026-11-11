@@ -34,7 +34,7 @@ public class StatistiquesController {
     public List<StatEvenement> getAll(
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to) {
-        return statistiquesService.getAll();
+        return statistiquesService.getAll(from, to);
     }
 
     // 3. GET /stats/overview - Indicateurs globaux pour le tableau de bord (200)

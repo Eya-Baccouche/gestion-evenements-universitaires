@@ -3,13 +3,14 @@ package com.warriors.statistiques.service;
 import com.warriors.statistiques.entity.Instantane;
 import com.warriors.statistiques.entity.StatEvenement;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 public interface StatistiquesService {
 
-    List<StatEvenement> getAll();
+    List<StatEvenement> getAll(LocalDate from, LocalDate to);
 
     Optional<StatEvenement> getByEvenementId(Long evenementId);
 
