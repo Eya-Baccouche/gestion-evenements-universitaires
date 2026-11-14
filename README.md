@@ -5,7 +5,7 @@ Projet AWD 2026-2027, équipe Warriors.
 ## Membres et microservices
 - Eya Ben Saber : Événements
 - Eya Baccouche : Statistiques
-- Rayen Amri : Check-in / QR
+- Rayen Amri : Sponsors et Partenariats
 - Youssef Saibi : Feedback et intervenants
 - Hana Abidi : Notifications
 - Amal Barhoumi : Planning des salles
