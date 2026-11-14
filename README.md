@@ -15,26 +15,26 @@ Plateforme web distribuée permettant de gérer l'intégralité du cycle de vie 
 
 L'architecture repose sur le pattern *Database-per-Service* avec une persistance polyglotte (MySQL, PostgreSQL, MongoDB) :
 
-| Microservice                        | Responsable                | Stack Backend              |   Port   |   Base de Données   | Rôle Clé                                                                 |
-| ----------------------------------- | -------------------------- | -------------------------- | :------: | :------------------: | -------------------------------------------------------------------------- |
-| **Événements** *(Pivot)*  | Eya Ben Saber              | Spring Boot                | `8081` |   **MySQL**   | Cycle de vie des événements et contrôle des jauges d'inscription.       |
-| **Compétitions & Équipes**  | Eya Baccouche              | Spring Boot                | `8082` | **PostgreSQL** | Hackathons, équipes, Smart Matching solo et notation des projets.         |
-| **Sponsors & Partenariats**   | Rayen Amri                 | Spring Boot                | `8083` |   **MySQL**   | Packs partenaires, conventions et démarchage bilatéral.                  |
-| **Feedback & Intervenants**   | Youssef Saibi              | Spring Boot                | `8084` | **PostgreSQL** | Disponibilités des speakers/jurys, affectations et recueil des avis.      |
-| **Fidélité & Récompenses** | Hana Abidi                 | Spring Boot                | `8085` |  **MongoDB**  | Gamification, historique des points d'engagement NoSQL et badges.          |
-| **Planning des salles**       | Amal Barhoumi              | Spring Boot                | `8086` | **PostgreSQL** | Réservations d'espaces et détection des conflits horaires (`tsrange`). |
-| **Logistique & Équipements** | **Équipe (Commun)** | **Python (FastAPI)** | `8087` | **PostgreSQL** | Gestion du stock matériel partagé (kits IoT, micros) et des stands.      |
+| Microservice                        | Responsable                | Stack Backend              |   Base de Données   | Rôle Clé                                                                 |
+| ----------------------------------- | -------------------------- | -------------------------- | :------------------: | -------------------------------------------------------------------------- |
+| **Événements** *(Pivot)*  | Eya Ben Saber              | Spring Boot                |   **MySQL**   | Cycle de vie des événements et contrôle des jauges d'inscription.       |
+| **Compétitions & Équipes**  | Eya Baccouche              | Spring Boot                | **PostgreSQL** | Hackathons, équipes, Smart Matching solo et notation des projets.         |
+| **Sponsors & Partenariats**   | Rayen Amri                 | Spring Boot                |   **MySQL**   | Packs partenaires, conventions et démarchage bilatéral.                  |
+| **Feedback & Intervenants**   | Youssef Saibi              | Spring Boot                | **PostgreSQL** | Disponibilités des speakers/jurys, affectations et recueil des avis.      |
+| **Fidélité & Récompenses** | Hana Abidi                 | Spring Boot                |  **MongoDB**  | Gamification, historique des points d'engagement NoSQL et badges.          |
+| **Planning des salles**       | Amal Barhoumi              | Spring Boot                | **PostgreSQL** | Réservations d'espaces et détection des conflits horaires (`tsrange`). |
+| **Logistique & Équipements** | **Équipe (Commun)** | **Python (FastAPI)** | **PostgreSQL** | Gestion du stock matériel partagé (kits IoT, micros) et des stands.      |
 
 ---
 
 ## 3. Socle Commun d'Infrastructure
 
-* **API Gateway (`8080`) :** Spring Cloud Gateway (point d'entrée unique, routage dynamique et CORS).
-* **Service Registry (`8761`) :** Netflix Eureka Server (annuaire dynamique des 7 microservices).
-* **Config Server (`8888`) :** Spring Cloud Config Server (centralisation des configurations applicatives).
-* **Sécurité & IAM (`8180`) :** Keycloak (authentification OAuth2 / OpenID Connect, tokens JWT et rôles RBAC).
-* **Message Broker (`5672`) :** RabbitMQ (Exchange Topic `evenements.topic` pour les flux asynchrones).
-* **Front-end (`5173`) :** Application web unique développée avec React (Vite).
+* **API Gateway :** Spring Cloud Gateway (point d'entrée unique, routage dynamique et CORS).
+* **Service Registry :** Netflix Eureka Server (annuaire dynamique des 7 microservices).
+* **Config Server :** Spring Cloud Config Server (centralisation des configurations applicatives).
+* **Sécurité & IAM :** Keycloak (authentification OAuth2 / OpenID Connect, tokens JWT et rôles RBAC).
+* **Message Broker :** RabbitMQ (Exchange Topic `evenements.topic` pour les flux asynchrones).
+* **Front-end :** Application web unique développée avec React (Vite).
 * **Conteneurisation :** Docker & Docker Compose pour orchestrer l'ensemble des conteneurs.
 
 ---
@@ -47,4 +47,4 @@ Tous les diagrammes de conception sont directement accessibles ci-dessous :
 * [Diagramme de Classes Global](Documentation/Diagrams/class-diagram.png) — *Modèle conceptuel métier des entités et relations*
 * [Diagramme de Cas d&#39;Utilisation](Documentation/Diagrams/Use_Case.png) — *Les 5 acteurs et leurs interactions avec la plateforme*
 * [Communications Synchrones](Documentation/Diagrams/communications-synchrones.png) — *Détail des 5 appels REST inter-services (OpenFeign)*
-* ⚡ [Communications Asynchrones](Documentation/Diagrams/communications-asynchrones.png) — *Détail des 6 événements publiés et consommés (RabbitMQ)*
+* [Communications Asynchrones](Documentation/Diagrams/communications-asynchrones.png) — *Détail des 6 événements publiés et consommés (RabbitMQ)*
